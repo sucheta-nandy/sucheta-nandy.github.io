@@ -426,5 +426,25 @@
 				<img src="./images/github.svg" alt="github">
 			</a>
 		</div>
+		<button id="dark-mode-toggle">Toggle Dark Mode</button>
  	</footer>
 	<button id="top-button" style="display: inline-block;">
+	<script>
+		// Dark mode toggle
+		const toggle = document.getElementById("dark-mode-toggle");
+		toggle.addEventListener("click", () => {
+			document.body.classList.toggle("dark-mode");
+		});
+
+		// Smooth scrolling
+		document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+			anchor.addEventListener('click', function(e) {
+				e.preventDefault();
+				document.querySelector(this.getAttribute('href')).scrollIntoView({
+					behavior: 'smooth'
+				});
+			});
+		});
+	</script>
+	</body>
+</html>
