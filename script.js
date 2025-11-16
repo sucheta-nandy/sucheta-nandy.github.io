@@ -1,10 +1,3 @@
-/* Basic utilities and progressive enhancements for the static site.
-   - Auto-detect theme using prefers-color-scheme
-   - Theme toggle (button updates body[data-theme])
-   - Typing headline animation (looping phrases)
-   - IntersectionObserver to reveal .fade-up elements when scrolled into view
-   - Mobile menu toggle
-*/
 
 (() => {
   // -------- Theme handling --------
@@ -30,10 +23,10 @@
 
   // -------- Typing animation --------
   const phrases = [
-    'Data Engineer.',
-    'Machine Learning Enthusiast.',
-    'ML Production & Pipelines.',
-    'Systems-minded Developer.'
+    'Data Engineer',
+    'Machine Learning Enthusiast',
+    'Collaborative Leader',
+    'Adaptive and Quick Learner'
   ];
   const typingEl = document.getElementById('typing');
   let phIndex = 0;
