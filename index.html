@@ -1,55 +1,224 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="light">
+<!doctype html>
+<html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Sucheta Nandy</title>
-<link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sucheta Nandy</title>
+  <meta name="description" content="Sucheta Nandy — MSE in Data Science, University of Pennsylvania. Data pipelines, ML models, and production engineering." />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<header class="navbar">
-<div class="logo">SN</div>
-<nav>
-<a href="#about">About</a>
-<a href="#projects">Projects</a>
-<a href="#contact">Contact</a>
-</nav>
-<button id="themeToggle">🌙</button>
-</header>
+  <!-- THEME ATTRIB IS SET VIA JS -->
+  <header class="nav glass">
+    <div class="brand">
+      <div class="logo">SN</div>
+      <div class="brand-text">
+        <div class="name">Sucheta Nandy</div>
+        <div class="subtitle">MSE in Data Science — University of Pennsylvania</div>
+      </div>
+    </div>
 
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+      <a href="#resume" class="cta-link">Resume</a>
+    </nav>
 
-<section class="hero">
-<div class="hero-content">
-<h1>Hello, I am <span>Sucheta</span></h1>
-<p>Data Engineer and Machine Learning Enthusiast</p>
-<button class="cta">View My Work</button>
-</div>
-<div class="bg-animation"></div>
-</section>
+    <div class="controls">
+      <button id="themeToggle" aria-label="Toggle theme">🌙</button>
+      <button id="menuToggle" class="mobile-only" aria-label="Open menu">☰</button>
+    </div>
+  </header>
 
+  <!-- MOBILE MENU -->
+  <div id="mobileMenu" class="mobile-menu">
+    <a href="#about" class="mobile-link">About</a>
+    <a href="#projects" class="mobile-link">Projects</a>
+    <a href="#skills" class="mobile-link">Skills</a>
+    <a href="#contact" class="mobile-link">Contact</a>
+    <a href="#resume" class="mobile-link">Resume</a>
+  </div>
 
-<section id="about" class="section">
-<h2>About Me</h2>
-<p>I am a Data Science graduate student at the University of Pennsylvania. I enjoy building scalable systems, pipelines and delightful products.</p>
-</section>
+  <!-- HERO -->
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-left">
+          <div class="eyebrow">Hello, my name is</div>
+          <h1 class="title">
+            <span class="static">Sucheta Nandy</span>
+            <span class="typing" id="typing"></span>
+          </h1>
 
+          <p class="lead">
+            I build scalable machine learning systems and data pipelines that power decisions at scale. Currently pursuing an MSE in Data Science at the University of Pennsylvania.
+          </p>
 
-<section id="projects" class="section">
-<h2>Projects</h2>
-<div class="projects-grid">
-<div class="project-card">Loan Prediction Model</div>
-<div class="project-card">Stcok Market Prediction using Machine Learning</div>
-<div class="project-card">To-do App</div>
-</div>
-</section>
+          <div class="hero-ctas">
+            <a href="#projects" class="btn primary">See Projects</a>
+            <a href="#contact" class="btn outline">Get in touch</a>
+            <a href="#resume" class="btn ghost">Resume</a>
+          </div>
 
+          <div class="meta">
+            <span>Based in Philadelphia</span>
+            <span class="dot">•</span>
+            <span>Open to internships & collaborations</span>
+          </div>
+        </div>
 
-<section id="contact" class="section">
-<h2>Contact</h2>
-<p>Email: suchetanandy217@gmail.com</p>
-</section>
+        <div class="hero-right">
+          <div class="portrait-frame glass">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Portrait of Sucheta" />
+            <!-- replace with your photo file to personalize -->
+          </div>
+        </div>
+      </div>
 
+      <!-- floating shapes + cinematic gradient -->
+      <div class="floating">
+        <div class="blob b1"></div>
+        <div class="blob b2"></div>
+        <div class="blob b3"></div>
+        <div class="spotlight"></div>
+      </div>
+    </section>
 
-<script src="script.js"></script>
+    <!-- ABOUT -->
+    <section id="about" class="section container fade-up">
+      <h2 class="section-title">About</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            I graduated with a B.Tech in Computer Science Engineering in 2022 and worked as a Systems Engineer at Tata Consultancy Services. I am passionate about building reliable, production-ready machine learning systems, designing data pipelines, and creating reproducible workflows.
+          </p>
+
+          <p>
+            I enjoy taking projects from prototyping to deployment using tools such as Docker, Spark, Kafka, and cloud platforms. Outside work I enjoy music and car culture.
+          </p>
+
+          <a class="btn outline" href="#projects">View selected projects</a>
+        </div>
+
+        <div class="about-stats glass">
+          <div>
+            <div class="stat">3+</div>
+            <div class="stat-label">Years Industry Experience</div>
+          </div>
+          <div>
+            <div class="stat">B.Tech</div>
+            <div class="stat-label">Computer Science, 2022</div>
+          </div>
+          <div>
+            <div class="stat">MSE</div>
+            <div class="stat-label">Data Science, UPenn</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section container">
+      <h2 class="section-title">Selected Projects</h2>
+      <div class="projects-grid">
+        <!-- card 1 -->
+        <article class="project-card fade-up">
+          <div class="card-top">
+            <div class="card-title">Loan Approval Prediction (Iron Bank)</div>
+            <div class="card-badge">ML</div>
+          </div>
+          <p class="card-desc">
+            Built an end-to-end ML pipeline for credit risk prediction using XGBoost, feature engineering, and SHAP for explainability. Includes CI/CD, Docker containerization, and monitoring.
+          </p>
+          <div class="card-tech">
+            <span>Python</span><span>XGBoost</span><span>SHAP</span><span>Docker</span>
+          </div>
+          <div class="card-actions">
+            <a href="#" class="btn small">Details</a>
+            <a href="#" class="btn small outline">Code</a>
+          </div>
+        </article>
+
+        <!-- card 2 -->
+        <article class="project-card fade-up">
+          <div class="card-top">
+            <div class="card-title">Real-time Data Pipeline</div>
+            <div class="card-badge">Streaming</div>
+          </div>
+          <p class="card-desc">
+            Designed a Kafka + Spark streaming pipeline to process telemetry and user events in near real time with exactly-once semantics and autoscaling consumers.
+          </p>
+          <div class="card-tech">
+            <span>Kafka</span><span>Spark</span><span>AWS</span><span>Docker</span>
+          </div>
+          <div class="card-actions">
+            <a href="#" class="btn small">Details</a>
+            <a href="#" class="btn small outline">Demo</a>
+          </div>
+        </article>
+
+        <!-- card 3 -->
+        <article class="project-card fade-up">
+          <div class="card-top">
+            <div class="card-title">To-do App (Polished Frontend)</div>
+            <div class="card-badge">Frontend</div>
+          </div>
+          <p class="card-desc">
+            A responsive single-page application with local persistence, polished UI interactions and deploy pipeline to Netlify. Used for UX experiments and portfolio demos.
+          </p>
+          <div class="card-tech">
+            <span>JavaScript</span><span>HTML</span><span>CSS</span><span>Netlify</span>
+          </div>
+          <div class="card-actions">
+            <a href="#" class="btn small">Visit</a>
+            <a href="#" class="btn small outline">Source</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section container fade-up">
+      <h2 class="section-title">Skills & Tools</h2>
+      <div class="skill-grid">
+        <div class="skill glass">Python</div>
+        <div class="skill glass">SQL</div>
+        <div class="skill glass">Google Cloud</div>
+        <div class="skill glass">Kafka</div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section container fade-up">
+      <h2 class="section-title">Contact</h2>
+      <p class="muted">Open to internships, research assistant roles, and collaborations. Email me at</p>
+      <p class="contact-email"><a href="mailto:suchetanandy217@gmail.com">suchetanandy217@gmail.com</a></p>
+
+      <div class="contact-grid">
+        <div class="contact-card glass">
+          <div class="small">Resume</div>
+          <a id="resume" href="#" download class="btn">Download</a>
+        </div>
+
+        <div class="contact-card glass">
+          <div class="small">LinkedIn</div>
+          <a href="#" class="btn outline">Profile</a>
+        </div>
+
+        <div class="contact-card glass">
+          <div class="small">Location</div>
+          <div>Philadelphia, USA</div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>Designed and developed by Sucheta Nandy • © <span id="year"></span></div>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
