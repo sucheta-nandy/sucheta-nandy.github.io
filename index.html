@@ -1,430 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" data-theme="light">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<title>Sucheta Nandy</title>
-	<link rel="icon" type="image/png" href="./images/laptop.png" hreflang="en-us">
-	<link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="./style.css">
-	
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sucheta Nandy</title>
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
+<header class="navbar">
+<div class="logo">SN</div>
+<nav>
+<a href="#about">About</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</nav>
+<button id="themeToggle">🌙</button>
+</header>
 
 
-<div id = "site">
-	<div class="switch-wrapper"> 
-		</a>
-		<div class="sun"></div> 
-		<div class="toggle-wrapper">
-			<input type="checkbox" id="switch"  />
-			<label for="switch" id="switch1" >Toggle</label> 
-		</div>
-		<div class="moon"></div>
-	</div>
-
-	<header class="intro">
-		<h1 class="intro_hello">
-			Hello!
-			<span  id="wave" class="emoji wave-hand animated "></span>
-		</h1>
-		<h2 class="intro_tagline">
-			I am
-			<div class="myname">Sucheta Nandy</div>
-			 <br><br><br><br>
-			<div class="mytext">
-				<div class="content">
-					<div class=" container">
-						<ul class="list">
-							<li class="item">Data Engineer</li>
-							<li class="item">Keen and Fast Learner </li>
-							<li class="item">Problem Solver </li>
-						</ul>
-					</div><br>
-				</div>
-			</div>
-			<span> Adaptable, Hardworking, Sincere & Innovative Individual
-			<span id="emojiwavehand" class="emoji technologist"></span>
-		</h2>
-		<h3 class="intro_contact">
-			<span>Get in touch</span>
-			<span class="emoji pointer"></span>
-			<span id="emailme">
-				<a href="mailto:suchetanandy217@gmail.com" target="_blank" class="highlight-link">suchetanandy217@gmail.com</a>
-			</span>
-		</h3>
-	</header>
-
-	<section class = "section background" >
-		<div class="section_title"><br>Background</div>
-		<div class="section_content">
-			<p>
-			Hello! I'm Sucheta Nandy, a Computer Science Engineer with experience as a Systems Engineer at Tata Consultancy Services. 
-			I am a graduate student at <a class = "underline-link" href="https://www.upenn.edu" target="_blank">University of Pennsylvania</a> where I am pursuing a Master of Science in Engineering (MSE) in Data Science. 
-			My interests lie in machine learning, large-scale data systems, and applying AI to solve impactful real-world problems.
-		</p>
-			<p>
-					I have completed my Bachelor's degree in Computer Science stream from
-					<a class = "underline-link" href="https://www.nsec.ac.in" target="_blank">
-					Netaji Subhash Engineering College</a> in 2022 .
-				  	While earning my degree, I completed a few internships and participated in various college activities.
-				  	I like exploring various fields in technology like Machine Learning, Data Science, Cloud Computing and Internet of Things.
-					  	
-			</p>
-
-			<p>
-				As a developer, I would like to bridge the gap between functionality and design. 
-				My goal is to always build applications that are scalable and efficient. 
-				I am also highly responsive to client needs and committed to helping people realize their vision.
-			</p>
-
-			<p>Other than my interest in technology, I love listening to good Music, watch
-				<a class = "underline-link" href="https://suchetanandy.medium.com/10-must-watch-web-series-e3c1bb55f18b" target="_blank"> 
-				 Web Series </a>
-				 and I am passionate about Cars and Sneakers.</p>
-
-			<a class="status" href="images/myResume.pdf" target="_blank"> 
-				<div class="status_light"> 
-					<div class="status_light_ring"></div> 
-					<div class="status_light_led"></div> 
-				</div> 
-				<div class="status_message">
-					Interested in working together? Reach out! 
-				</div> 
-			</a>
-		</div>
-	</section>
-
-	<!-- Education Section -->
-	<section class="section education">
-		<div class="section_title">Education</div>
-		<div class="section_content">
-			<div class="jobs">
-				<div class="job">
-					<div class="time-place"> 
-						<div class="job_company">
-							<a href="https://www.upenn.edu/" target="_blank">University of Pennsylvania</a>
-						</div>
-						<div class="job_time">       
-							August 2025 – May 2027
-						</div>
-					</div>
-					<div class="job_position">
-						Master of Science in Engineering (MSE) in Data Science
-					</div>
-				</div>
-
-				<div class="job">
-					<div class="time-place"> 
-						<div class="job_company">
-							<a href="https://www.nsec.ac.in" target="_blank">Netaji Subhash Engineering College</a>
-						</div>
-						<div class="job_time">       
-							July 2018 – July 2022
-						</div>
-					</div>
-					<div class="job_position">
-						Bachelor of Technology in Computer Science Engineering
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="section skills" data-aos="slide-up">
-		<div class="section_title">Skills</div>
-		<div class="section_content">
-			<div class="skillz">
-				<div class="skillz_category"> 
-					<div class="skillz_category_label">
-						Languages
-					</div>
-					<ul>
-						 <li class="skillz_category_item">C | C++</li>
-						 <li class="skillz_category_item">JAVA</li>
-						 <li class="skillz_category_item">PYTHON</li>
-						 <li class="skillz_category_item">JAVASCRIPT</li> 
-						 <li class="skillz_category_item">CSS3</li>
-						 <li class="skillz_category_item">HTML5</li>
-						 <li class="skillz_category_item">DJANGO</li>
-					</ul> 
-				</div>
-				
-				<div class="skillz_category"> 
-					<div class="skillz_category_label">
-						Platforms<br>
-					</div>
-					<ul>
-						<li class="skillz_category_item">WINDOWS</li>
-						<li class="skillz_category_item">LINUX</li>
-						<li class="skillz_category_item">ARDUINO</li>
-						<li class="skillz_category_item">AWS</li>
-						<li class="skillz_category_item">GCP</li>
-					</ul>
-				</div>
-
-				<div class="skillz_category"> 
-					<div class="skillz_category_label">
-						Soft Skills
-					</div>
-					<ul>
-						<li class="skillz_category_item">TIME MANAGEMENT</li>
-						<li class="skillz_category_item">LEADERSHIP</li>
-						<li class="skillz_category_item">DISCIPLINE</li>
-						<li class="skillz_category_item">TEAMWORK</li>
-						<li class="skillz_category_item">PROBLEM SOLVING</li>
-						<li class="skillz_category_item">COMMUNICATION</li>	
-					</ul>
-				</div>
-				
-				<div class="skillz_category"> 
-					<div class="skillz_category_label">
-						Others
-					</div>
-					<ul>
-						<li class="skillz_category_item">MACHINE LEARNING</li>
-						<li class="skillz_category_item">DEEP LEARNING</li>
-						<li class="skillz_category_item">COMPUTER VISION</li>
-						<li class="skillz_category_item">SOCIAL MEDIA MARKETING</li>
-						<li class="skillz_category_item">DIGITAL MARKETING</li>
-						<li class="skillz_category_item">INTERNET OF THINGS</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</section>
+<section class="hero">
+<div class="hero-content">
+<h1>Hello, I am <span>Sucheta</span></h1>
+<p>Data Engineer and Machine Learning Enthusiast</p>
+<button class="cta">View My Work</button>
+</div>
+<div class="bg-animation"></div>
+</section>
 
 
-	<section class="section experience">
-		<div class="section_title">
-			Experience
-		</div>
-		
-		<div class="section_content">
-			<div class="jobs">
-				<div class="job">
-					<div class="time-place"> 
-						<div class="job_company">
-							<a href="https://www.tcs.com/" target="_blank">Tata Consultancy Services</a>
-						</div>
-						<div class="job_time">       
-							August 2022 – August 2025
-						</div>
-					</div>
-					<div class="job_position">
-						Systems Engineer
-					</div>
-				</div>
+<section id="about" class="section">
+<h2>About Me</h2>
+<p>I am a Data Science graduate student at the University of Pennsylvania. I enjoy building scalable systems, pipelines and delightful products.</p>
+</section>
 
-				<div class="job">
-					<div class="time-place"> 
-						<div class="job_company">
-							<a href="https://www.tcs.com/" target="_blank">Tata Consultancy Services</a>
-						</div>
-						<div class="job_time">       
-							February 2022 – June 2022 
-						</div>
-			  		</div>
-					<div class="job_position">
-						Project Intern
-					</div>
-				</div>
-				
-				<div class="job">
-					<div class="time-place"> 
-						<div class="job_company">
-							<a href="https://www.tatapower.com" target="_blank">TATA POWER, India</a>
-						</div>
-						<div class="job_time">       
-							September 2020 – October 2020 
-						</div>
-			  		</div>
-					<div class="job_position">
-						Marketing Analyst
-					</div>
-				</div>
-				
-				<div class="job">
-					<div class="time-place"> 
-						<div class="job_company">
-							<a href="https://internshala.com" target="_blank">Internshala</a>
-						</div>
-						<div class="job_time">       
-							September 2019 – November 2019 
-						</div>
-			  		</div>
-					<div class="job_position">
-						Internshala Student Partner 15
-					</div>
-				</div>
 
-				<div class="job">
-					<div class="time-place"> 
-						<div class="job_company">
-							<a href="https://muskurahat.org.in" target="_blank">Muskurahat Foundation, India</a>
-						</div>
-						<div class="job_time">       
-							June 2019 - July 2019
-						</div>
-					</div>
-					<div class="job_position">
-						Social Media Marketing
-					</div>
-				</div>
-			</div>
-			<a href="https://drive.google.com/file/d/1HvOk-vXsxq_DEZK0sRZV4hVsztI1rJXm/view?usp=sharing" target="_blank" class="arrow-link">View My Resume</a>
-		</div>
-	</section>
-	
-	<section class="section featured-projects"> 
-		<div class="section_title">Recent Projects</div> 
-			<div class="section_content"> 
-				<div class="project salzakshipment">
-					<figure class="project_pic"> 
-							<img src="./images/todo2.png" alt="image">
-						</a> 
-					</figure> 
-				</div><br>
-				<details>
-					<summary> <a href="https://mystifying-to-do-list.netlify.app/" target="_blank">To do List App</a></summary>
-					<div class="project_name">
-							<a href="https://mystifying-to-do-list.netlify.app/" target="_blank"> </a>
-					</div>
-					<div class = "featured-projects-content"> 
-						<p>It helps to make your daily To-do lists and keep track of things easily.</p>
-						
-					</div>
-					<div class="project_used">
-							<span class="project_used_item">CSS3</span>
-							<span class="project_used_item">HTML5</span>
-							<span class="project_used_item">JAVASCRIPT</span>  
-							<span class="project_used_item">NETLIFY</span>
-					</div> 
-					  <div class="project_links"> 
-							<a href="https://mystifying-to-do-list.netlify.app/" target="_blank">
-								<img src="./images/todo1.png" alt="image">
-							</a>
-					</div> 
-				</details>
-			</div>
-	</section>
+<section id="projects" class="section">
+<h2>Projects</h2>
+<div class="projects-grid">
+<div class="project-card">Loan Prediction Model</div>
+<div class="project-card">Stcok Market Prediction using Machine Learning</div>
+<div class="project-card">To-do App</div>
+</div>
+</section>
 
-	<section class="section other-projects">
-		<div class="section_title">Other Projects</div>
-			<div class="section_content">
-				<details>
-					<summary>Stock Market Prediction Using Machine Learning</summary>
-					<div class="project"> 
-						<p>In this project, we have used various machine learning and deep learning techniques to predict future
-							prices of different stocks. We have used MLP, RNN, LSTM and a combination of RNN and LSTM and have worked on Apple and Facebook Datasets.<br>
-							Our proposed model of combined RNN and LSTM produces the most accuarte results and gives the lowest root mean squared error.
-						</p> 
-						<div class="project_used"> 
-							<span class="project_used_item">PYTHON</span> 
-							<span class="project_used_item">JUPYTER NOTEBOOK</span>
-							<span class="project_used_item">NUMPY, PANDAS, MATPLOTLIB</span>
-							<span class="project_used_item">TORCH</span> 
-						</div> 
-					</div>
-				</details>
-				<details>
-					<summary>Hospital Management System</summary>
-					<div class="project"> 
-						<p>It is a simple Java Project. 
-						   One can add new patient details, doctor details and staff details to the ones already existing in the system.
-						   One can also check the Lab Tests and other Facilities available.
-						</p> 
-						<div class="project_used">  
-							<span class="project_used_item">JAVA</span>
-							
-						</div> 
-					</div>
-				</details>
-				<details>
-					<summary>The Car Shop</summary>
-					<div class="project"> 
-						<p>It is a website for booking luxury cars.The customer can log in and book his/her car and get confirmation receipt.</p> 
-						<div class="project_used"> 
-							<span class="project_used_item">DJANGO</span> 
-							<span class="project_used_item">JAVASCRIPT</span>
-							<span class="project_used_item">CSS</span>
-							<span class="project_used_item">HTML</span> 
-						</div> 
-						<div class="project_links"> 
-							<a href="#" target="_blank">
-								<img src="./images/thecarshopdetails.png" alt="image">
-							</a>
-						</div>
-					</div>
-				</details>
 
-				<details>
-					<summary>Smart Dustbin</summary>
-					<div class="project"> 
-						<p>The smart dustbin is an IOT based smart waste management system. It detects when the dustbin gets full and 
-							alerts that it is time to empty it and prevent overflowing of dumpsters.</p> 
-						<div class="project_used"> 
-							<span class="project_used_item">ARDUINO UNO</span> 
-							<span class="project_used_item">ULTRASONIC SENSORS</span>
-							<span class="project_used_item">DC MOTOR</span>
-							<span class="project_used_item">ARDUINO IDE</span> 
-						</div> 
-					</div>
-				</details>
+<section id="contact" class="section">
+<h2>Contact</h2>
+<p>Email: suchetanandy217@gmail.com</p>
+</section>
 
-				<details>
-					<summary><a href="https://rockpaperscissorsn.netlify.app/" target="_blank">Rock Paper Scissor Game</a></summary>
-					<div class="project"> 
-						<p>This is a simple rock paper and scissors game.
-						Here the rock paper scissors game is made with vanilla javascript, by creating small functions to abstract our code based on what it does.</p> 
-						<div class="project_used">  
-							<span class="project_used_item">JAVASCRIPT</span>
-							<span class="project_used_item">CSS</span>
-							<span class="project_used_item">HTML</span> 
-							<span class="project_used_item">NETLIFY</span>
-						</div> 
-					</div>
-				</details>
-			</div>
-	</section>
 
-	<footer class="footer">
-	 	<div class="footer_copyright"> 
-	 		<div class="top"> 
-	 			<span>
-	 				Designed &amp; Developed by
-				</span>
-			</div> 
-			<div class="bottom"> 
-				<span>
-					Sucheta Nandy
-				</span> 
-				<img class="emoji" src="./images/favourite.png" alt="emoji"> 
-				<span><br>
-					&copy; 2022
-				</span>
-			</div> 
-		</div> 
-		<div class="footer_links"> 
-			<a href="mailto:suchetanandy217@gmail.com" target="_blank" title="email"> 
-				<span class="text">
-					Email
-				</span> 
-				<img src="images/email.svg" alt="email">
-			</a>
-			<a href="https://www.linkedin.com/in/sucheta-nandy-a79605180/" target="_blank" title="linkedin"> 
-				<span class="text">
-					Linkedin
-				</span>
-				<img src="images/linkedin.svg" alt="linkedin">
-			</a>
-			<a href="https://github.com/sucheta-nandy" target="_blank" title="github"> 
-				<span class="text">
-					Github </span> <img src="./images/github.svg" alt="github"> </a> 
-		</div> </footer> 
-	<button id="top-button" style="display: inline-block;"> <img src="images/finger-up-emoji-clipart-21.png" alt="">
-	</button> <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> 
-	<script type="text/javascript" src="main.js"></script>
-</body> 
+<script src="script.js"></script>
+</body>
 </html>
