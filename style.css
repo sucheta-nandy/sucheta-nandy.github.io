@@ -523,6 +523,8 @@ body {
   flex-direction: column;
   justify-content: space-between;
   transition: transform 0.35s ease, box-shadow 0.35s ease;
+  opacity: 0;
+  transform: translateY(20px); /* initial state for fade-up animation */
 }
 
 .contact-card:hover {
@@ -530,7 +532,14 @@ body {
   box-shadow: 0 24px 50px rgba(0,0,0,0.25);
 }
 
-/* Small label above link */
+/* Fade-up animation */
+.contact-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Small label above button */
 .contact-card .small {
   font-size: 13px;
   color: var(--muted);
@@ -540,7 +549,7 @@ body {
   letter-spacing: 0.5px;
 }
 
-/* Text inside card */
+/* Text inside card (like location) */
 .contact-card div {
   color: var(--fg);
   font-weight: 600;
@@ -548,7 +557,7 @@ body {
   margin-bottom: 8px;
 }
 
-/* Buttons inside contact cards */
+/* Buttons inside contact cards (uniform gradient style) */
 .contact-card a.btn {
   display: inline-block;
   font-size: 14px;
@@ -557,34 +566,18 @@ body {
   text-align: center;
   padding: 10px 16px;
   text-decoration: none;
-  transition: all 0.25s ease;
-  margin-top: 6px;
-}
-
-
-.contact-card a.btn.primary {
-  background: linear-gradient(90deg, var(--brand), #00cfe8);
+  background: linear-gradient(90deg, #6c5ce7, #00cfe8); /* gradient */
   color: #fff;
   box-shadow: 0 8px 24px rgba(108,92,231,0.14);
+  transition: all 0.35s ease;
 }
 
-.contact-card a.btn.primary:hover {
+.contact-card a.btn:hover {
+  background: linear-gradient(120deg, #00cfe8, #6c5ce7);
   transform: translateY(-2px);
   box-shadow: 0 12px 36px rgba(108,92,231,0.25);
 }
 
-.contact-card a.btn.outline {
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.25);
-  color: var(--fg);
-}
-
-.contact-card a.btn.outline:hover {
-  background: var(--brand);
-  color: #fff;
-  transform: translateY(-2px);
-  box-shadow: 0 12px 36px rgba(108,92,231,0.25);
-}
 
 /* Footer */
 .footer {
