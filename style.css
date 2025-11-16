@@ -23,6 +23,19 @@ body[data-theme="dark"] {
   width: 100%;
   top: 0;
   backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
+.navbar a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: inherit;
+  font-weight: 500;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .hero {
@@ -39,15 +52,41 @@ body[data-theme="dark"] {
   text-align: center;
 }
 
+.hero-content h1 {
+  font-size: 48px;
+}
+
+.hero-content h1 span {
+  color: #6c5ce7;
+}
+
+.hero-content p {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.cta {
+  margin-top: 20px;
+  padding: 12px 25px;
+  border: none;
+  background: #6c5ce7;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
 .bg-animation {
   position: absolute;
+  top: 0;
+  left: 0;
   width: 200%;
   height: 200%;
   background: radial-gradient(circle, #6c5ce7, transparent),
               radial-gradient(circle, #00cec9, transparent),
               radial-gradient(circle, #fdcb6e, transparent);
   animation: moveBg 10s infinite alternate ease-in-out;
-  opacity: 0.4;
+  opacity: 0.45;
 }
 
 @keyframes moveBg {
@@ -62,7 +101,7 @@ body[data-theme="dark"] {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
   margin-top: 30px;
 }
@@ -74,6 +113,7 @@ body[data-theme="dark"] {
   backdrop-filter: blur(10px);
   cursor: pointer;
   transition: transform 0.3s;
+  border: 1px solid rgba(255,255,255,0.2);
 }
 
 .project-card:hover {
