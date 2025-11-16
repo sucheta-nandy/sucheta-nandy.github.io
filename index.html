@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>💻 Sucheta Nandy </title>
+  <title>💻 Sucheta Nandy</title>
   <link rel="icon" type="image/png" href="images/favourite.png">
   <meta name="description" content="Sucheta Nandy — MSE in Data Science, University of Pennsylvania. Data pipelines, ML models, and production engineering." />
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <!-- THEME ATTRIB IS SET VIA JS -->
+<body data-theme="light">
+  <!-- HEADER -->
   <header class="nav glass">
     <div class="brand">
       <div class="logo">SN</div>
@@ -35,11 +35,11 @@
 
   <!-- MOBILE MENU -->
   <div id="mobileMenu" class="mobile-menu">
-    <a href="#about" class="mobile-link">About</a>
-    <a href="#projects" class="mobile-link">Projects</a>
-    <a href="#skills" class="mobile-link">Skills</a>
-    <a href="#contact" class="mobile-link">Contact</a>
-    <a href="#resume" class="mobile-link">Resume</a>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+    <a href="#resume">Resume</a>
   </div>
 
   <!-- HERO -->
@@ -76,7 +76,6 @@
         </div>
       </div>
 
-      <!-- floating shapes + cinematic gradient -->
       <div class="floating">
         <div class="blob b1"></div>
         <div class="blob b2"></div>
@@ -91,16 +90,13 @@
       <div class="about-grid">
         <div class="about-text">
           <p>
-            I graduated with a B.Tech in Computer Science Engineering in 2022 and worked as a Systems Engineer at Tata Consultancy Services. I am passionate about building reliable, production-ready machine learning systems, designing data pipelines, and creating reproducible workflows.
+            I graduated with a B.Tech in Computer Science & Engineering in 2022 and worked as a Systems Engineer at Tata Consultancy Services. I am passionate about building reliable, production-ready machine learning systems, designing data pipelines, and creating reproducible workflows.
           </p>
-
           <p>
             I enjoy taking projects from prototyping to deployment using tools such as Python, SQL, Kafka, and cloud platforms. Outside work I am a sneakerhead and car enthusiast.
           </p>
-
           <a class="btn outline" href="#projects">View selected projects</a>
         </div>
-
         <div class="about-stats glass">
           <div>
             <div class="stat">3</div>
@@ -119,140 +115,131 @@
     </section>
 
     <!-- PROJECTS -->
-    <section id="projects" class="section container">
+    <section id="projects" class="section container fade-up">
       <h2 class="section-title">Selected Projects</h2>
       <div class="projects-grid">
-        <!-- card 1 -->
-         <article class="project-card fade-up">
-    <div class="card-top">
-      <div class="card-title">Loan Approval Prediction</div>
-      <div class="card-badge">ML</div>
-    </div>
-    <p class="card-desc">
-      A Machine Learning project to predict whether a loan application will be approved. This project uses classification algorithms, feature engineering, hyperparameter tuning, and ensemble methods to achieve high prediction accuracy.
-    </p>
-    <div class="card-tech">
-      <span>Python</span><span>Logistic Regression</span><span>GridSearchCV</span><span>Gradient Boosting</span>
-    </div>
-    <div class="card-actions">
-      <a href="https://github.com/sucheta-nandy/Loan-Approval-Prediction" target="_blank" class="btn small outline">Code</a>
-    </div>
-  </article>
+        <!-- Loan Approval -->
+        <article class="project-card fade-up">
+          <div class="card-top">
+            <div class="card-title">Loan Approval Prediction</div>
+            <div class="card-badge">ML</div>
+          </div>
+          <p class="card-desc">
+            A Machine Learning project to predict whether a loan application will be approved. Uses classification, feature engineering, hyperparameter tuning, and ensemble methods.
+          </p>
+          <div class="card-tech">
+            <span>Python</span><span>Logistic Regression</span><span>GridSearchCV</span><span>Gradient Boosting</span>
+          </div>
+          <div class="card-actions">
+            <a href="https://github.com/sucheta-nandy/Loan-Approval-Prediction" target="_blank" class="btn small outline">Code</a>
+          </div>
+        </article>
 
-        <!-- card 2 -->
-  <article class="project-card fade-up">
-    <div class="card-top">
-      <div class="card-title">Genomic NLP Pipeline</div>
-      <div class="card-badge">ML/NLP</div>
-    </div>
-    <p class="card-desc">
-      A genomic text processing pipeline using NLP to extract meaningful biological insights from large genomic datasets.
-    </p>
-    <div class="card-tech">
-      <span>Python</span><span>PyTorch</span><span>HuggingFace</span><span>Docker</span>
-    </div>
-    <div class="card-actions">
-      <a href="https://github.com/sucheta-nandy/genomic-nlp-pipeline" target="_blank" class="btn small outline">Code</a>
-    </div>
-  </article>
+        <!-- Genomic NLP -->
+        <article class="project-card fade-up">
+          <div class="card-top">
+            <div class="card-title">Genomic NLP Pipeline</div>
+            <div class="card-badge">ML/NLP</div>
+          </div>
+          <p class="card-desc">
+            A genomic text processing pipeline using NLP to extract meaningful biological insights from large genomic datasets.
+          </p>
+          <div class="card-tech">
+            <span>Python</span><span>numpy</span><span>spacy</span><span>scikit-learn</span>
+          </div>
+          <div class="card-actions">
+            <a href="https://github.com/sucheta-nandy/genomic-nlp-pipeline" target="_blank" class="btn small outline">Code</a>
+          </div>
+        </article>
 
-
-        <!-- card 3 -->
-<article class="project-card fade-up">
-    <div class="card-top">
-      <div class="card-title">To-do App </div>
-      <div class="card-badge">Frontend</div>
-    </div>
-    <p class="card-desc">
-      A responsive single-page application with local persistence, polished UI interactions and deploy pipeline to Netlify. Used for UX experiments and portfolio demos.
-    </p>
-    <div class="card-tech">
-      <span>JavaScript</span><span>HTML</span><span>CSS</span><span>Netlify</span>
-    </div>
-    <div class="card-actions">
-      <a href="https://mystifying-to-do-list.netlify.app" target="_blank" class="btn small">Visit</a>
-    </div>
-  </article>
+        <!-- To-do App -->
+        <article class="project-card fade-up">
+          <div class="card-top">
+            <div class="card-title">To-do App</div>
+            <div class="card-badge">Frontend</div>
+          </div>
+          <p class="card-desc">
+            A responsive To do list app with local persistence and deploy pipeline to Netlify. Used for UX experiments and portfolio demos.
+          </p>
+          <div class="card-tech">
+            <span>JavaScript</span><span>HTML</span><span>CSS</span><span>Netlify</span>
+          </div>
+          <div class="card-actions">
+            <a href="https://mystifying-to-do-list.netlify.app" target="_blank" class="btn small">Visit</a>
+          </div>
+        </article>
       </div>
     </section>
 
     <!-- SKILLS -->
-<section id="skills" class="skills section">
-  <div class="container">
-    <div class="section-title">Skills & Expertise</div>
-  <div class="skills-grid">
-    <!-- Technical Skills -->
-    <div class="skill-category glass">
-      <h3>Technical Skills</h3>
-      <ul>
-        <li><strong>Programming Languages:</strong> C, C++, Java, Python</li>
-        <li><strong>Databases & Query Language:</strong> Oracle SQL</li>
-        <li><strong>Cloud Platforms & Tools:</strong> Google Cloud Platform (GCP)</li>
-        <li><strong>Big Data & Messaging:</strong> Apache Kafka</li>
-        <li><strong>Operating Systems:</strong> Unix/Linux, Windows</li>
-        <li><strong>Version Control & Collaboration:</strong> Git, GitLab</li>
-        <li><strong>Data Analysis & Scripting:</strong> Python libraries (Pandas, Numpy, Matplotlib)</li>
-        <li><strong>Microsoft Office:</strong> Excel, Word, PowerPoint</li>
-        <li><strong>Certifications:</strong> GCP: Professional Data Engineer, Associate Cloud Engineer | Azure: AZ-900</li>
-      </ul>
-    </div>
+    <section id="skills" class="skills section fade-up">
+      <div class="container">
+        <div class="section-title">Skills & Expertise</div>
+        <div class="skills-grid">
+          <div class="skill-category glass fade-up">
+            <h3>Technical Skills</h3>
+            <ul>
+              <li><strong>Programming Languages:</strong> C, C++, Java, Python</li>
+              <li><strong>Databases & Query Language:</strong> Oracle SQL</li>
+              <li><strong>Cloud Platforms & Tools:</strong> Google Cloud Platform (GCP)</li>
+              <li><strong>Big Data & Messaging:</strong> Apache Kafka</li>
+              <li><strong>Operating Systems:</strong> Unix/Linux, Windows</li>
+              <li><strong>Version Control & Collaboration:</strong> Git, GitLab</li>
+              <li><strong>Data Analysis & Scripting:</strong> Python libraries (Pandas, Numpy, Matplotlib)</li>
+              <li><strong>Microsoft Office:</strong> Excel, Word, PowerPoint</li>
+              <li><strong>Certifications:</strong> GCP: Professional Data Engineer, Associate Cloud Engineer | Azure: AZ-900</li>
+            </ul>
+          </div>
 
-    <!-- Soft Skills -->
-    <div class="skill-category glass">
-      <h3>Soft Skills</h3>
-      <ul>
-        <li>Project Management, Time Management, Event Planning & Coordination</li>
-        <li>Teamwork & Collaboration, Problem Solving & Analytical Thinking</li>
-        <li>Deadline-Oriented, Mentoring & Coaching, Critical Thinking</li>
-        <li>Initiative & Proactiveness, Learning Agility</li>
-        <li>Creativity & Innovation, Adaptability & Flexibility, Interpersonal Skills</li>
-        <li>Attention to Detail, Strategic Thinking, Decision-Making, Multitasking, Accountability</li>
-      </ul>
-    </div>
-  </div>
-    </div>
-</section>
-
+          <div class="skill-category glass fade-up">
+            <h3>Soft Skills & Leadership</h3>
+            <ul>
+              <li>Project Management, Time Management, Event Planning & Coordination</li>
+              <li>Teamwork & Collaboration, Problem Solving & Analytical Thinking</li>
+              <li>Deadline-Oriented, Mentoring & Coaching, Critical Thinking</li>
+              <li>Initiative & Proactiveness, Learning Agility</li>
+              <li>Creativity & Innovation, Adaptability & Flexibility, Interpersonal Skills</li>
+              <li>Attention to Detail, Strategic Thinking, Decision-Making, Multitasking, Accountability</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- CONTACT -->
-<section id="contact" class="contact section">
-  <div class="container">
-    <div class="section-title">Contact Me</div>
-  <div class="contact-grid">
-    <div class="contact-card glass">
-      <div class="small">Resume</div>
-      <a href="https://drive.google.com/file/d/1RJr3EGde2x6oVzUWPJQi8UEYrDhpq6GT/view?usp=sharing" target="_blank" class="btn primary">View Resume</a>
-    </div>
+    <section id="contact" class="contact section fade-up">
+      <div class="container">
+        <div class="section-title">Contact Me</div>
+        <div class="contact-grid">
+          <div class="contact-card glass fade-up">
+            <div class="small">Resume</div>
+            <a href="https://drive.google.com/file/d/1RJr3EGde2x6oVzUWPJQi8UEYrDhpq6GT/view?usp=sharing" target="_blank" class="btn">View Resume</a>
+          </div>
 
-    <div class="contact-card glass">
-      <div class="small">GitHub</div>
-      <a href="https://github.com/sucheta-nandy" target="_blank" class="btn outline">Profile</a>
-    </div>
+          <div class="contact-card glass fade-up">
+            <div class="small">GitHub</div>
+            <a href="https://github.com/sucheta-nandy" target="_blank" class="btn">Profile</a>
+          </div>
 
-    <div class="contact-card glass">
-      <div class="small">LinkedIn</div>
-      <a href="https://www.linkedin.com/in/suchetanandy" target="_blank" class="btn outline">Profile</a>
-    </div>
+          <div class="contact-card glass fade-up">
+            <div class="small">LinkedIn</div>
+            <a href="https://www.linkedin.com/in/suchetanandy" target="_blank" class="btn">Profile</a>
+          </div>
 
-    <div class="contact-card glass">
-      <div class="small">Instagram</div>
-      <a href="https://www.instagram.com/sucheta_nandy" target="_blank" class="btn outline">Profile</a>
-    </div>
+          <div class="contact-card glass fade-up">
+            <div class="small">Instagram</div>
+            <a href="https://www.instagram.com/sucheta_nandy" target="_blank" class="btn">Profile</a>
+          </div>
 
-    <div class="contact-card glass">
-      <div class="small">Location</div>
-      <div>Philadelphia, USA</div>
-    </div>
-  </div>
-     </div>
-</section>
-
+          <div class="contact-card glass fade-up">
+            <div class="small">Location</div>
+            <div>Philadelphia, USA</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <footer class="footer">
       <div>Designed and developed by Sucheta Nandy • © <span id="year"></span></div>
     </footer>
   </main>
-
-  <script src="script.js"></script>
-</body>
-</html>
