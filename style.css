@@ -143,6 +143,16 @@ body {
   margin: 0 auto;
   padding: 0 24px;
 }
+/* Light mode hero background alternative */
+body[data-theme="light"] .hero {
+  position: relative;
+  background: radial-gradient(
+    circle at 20% 30%,
+    rgba(255, 187, 187, 0.25),
+    rgba(255, 255, 255, 1) 60%
+  );
+}
+
 
 .hero-left { flex: 1; max-width: 720px; }
 .hero-right { flex: 0 0 360px; display: flex; justify-content: center; }
@@ -202,6 +212,10 @@ body {
 .b2 { width: 300px; height: 300px; right: 6%; top: 20%; background: linear-gradient(45deg, #00cec9, #00b894); animation: blobMove 10s ease-in-out infinite; }
 .b3 { width: 220px; height: 220px; left: 20%; bottom: 6%; background: linear-gradient(45deg, #ff6b6b, #ff4757); animation: blobMove 18s ease-in-out infinite; }
 .spotlight { position: absolute; inset: 0; background: radial-gradient(600px 200px at 50% 20%, rgba(255,255,255,0.06), transparent); }
+/* Hide blobs in light mode */
+body[data-theme="light"] .blob {
+  display: none !important;
+}
 
 @keyframes blobMove { 0% { transform: translateY(0) scale(1); } 50% { transform: translateY(-30px) scale(1.05); } 100% { transform: translateY(0) scale(1); } }
 
