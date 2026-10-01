@@ -22,10 +22,13 @@
 
   // -------- Typing animation --------
   const phrases = [
+    'AI Engineer',
+    'Data Scientist',
     'Data Engineer',
-    'Machine Learning Enthusiast',
+    'Machine Learning Engineer',
     'Collaborative Leader',
     'Adaptive and Quick Learner'
+    'Building Intelligent Data Systems'
   ];
 
   const typingEl = document.getElementById('typing');
