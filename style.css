@@ -352,6 +352,8 @@ body[data-theme="light"] .blob {
 
 /* Responsive */
 @media (max-width: 1024px) {
+  .nav-links { display: none; }
+  .mobile-only { display: inline-flex; }
   .projects-grid { grid-template-columns: repeat(2,1fr); }
   .featured-projects { grid-template-columns: 1fr; }
   .about-grid { grid-template-columns: 1fr; gap: 18px; }
@@ -359,9 +361,7 @@ body[data-theme="light"] .blob {
   .lead { max-width: 100%; }
 }
 
-@media (max-width: 640px) {
-  .nav-links { display: none; }
-  .mobile-only { display: inline-flex; }
+@media (max-width: 720px) {
   .mobile-menu { display: none; }
   .projects-grid { grid-template-columns: 1fr; }
   .supporting-projects { grid-template-columns: 1fr; }
