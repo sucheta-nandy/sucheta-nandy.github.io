@@ -20,50 +20,6 @@
     updateToggleIcon();
   });
 
-  // -------- Typing animation --------
-  const phrases = [
-    'Data Engineer',
-    'AI Engineer',
-    'Data Scientist',
-    'Machine Learning Engineer',
-    'Collaborative Leader',
-    'Adaptive and Quick Learner',
-    'Building Intelligent Data Systems'
-  ];
-
-  const typingEl = document.getElementById('typing');
-  let phIndex = 0;
-  let charIndex = 0;
-  let deleting = false;
-
-  const TYPING_SPEED = 60;
-  const DELETING_SPEED = 30;
-  const DELAY_AFTER = 1000;
-
-  function tick() {
-    const current = phrases[phIndex];
-
-    if (!deleting) {
-      charIndex++;
-      typingEl.textContent = current.slice(0, charIndex);
-      if (charIndex === current.length) {
-        deleting = true;
-        setTimeout(tick, DELAY_AFTER);
-        return;
-      }
-    } else {
-      charIndex--;
-      typingEl.textContent = current.slice(0, charIndex);
-      if (charIndex === 0) {
-        deleting = false;
-        phIndex = (phIndex + 1) % phrases.length;
-      }
-    }
-    setTimeout(tick, deleting ? DELETING_SPEED : TYPING_SPEED);
-  }
-
-  setTimeout(tick, 600);
-
   // -------- IntersectionObserver for fade-up elements --------
   const observerOptions = { root: null, rootMargin: '0px 0px -8% 0px', threshold: 0.05 };
 
@@ -85,7 +41,7 @@
     io.observe(cat);
   });
 
-  // Observe contact cards (your missing part)
+  // Observe contact cards
   document.querySelectorAll('.contact-card').forEach((card, i) => {
     card.style.transitionDelay = `${0.06 * i}s`;
     io.observe(card);
