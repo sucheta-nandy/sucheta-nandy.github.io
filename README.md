@@ -1,6 +1,6 @@
 # Sucheta Nandy — Portfolio
 
-Personal portfolio for Sucheta Nandy, a University of Pennsylvania MSE candidate and data engineer working across sports analytics, machine learning, AI systems, and data engineering.
+Personal portfolio for Sucheta Nandy, a University of Pennsylvania MSE candidate and data engineer working across data engineering, AI systems, machine learning, NLP, and applied analytics.
 
 [View the live portfolio](https://sucheta-nandy.github.io)
 
