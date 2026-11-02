@@ -25,6 +25,7 @@
     'Data Engineer',
     'AI Engineer',
     'Data Scientist',
+    'Sports Analytics Builder',
     'Machine Learning Engineer',
     'Collaborative Leader',
     'Adaptive and Quick Learner',
