@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Why 99.7% Accuracy Made Me Nervous | Sucheta Nandy</title>
+  <meta name="description" content="A field note on target leakage, prediction boundaries, honest evaluation, and why a lower trustworthy score can be a better result." />
+  <link rel="canonical" href="https://sucheta-nandy.github.io/notes/why-99-7-accuracy-made-me-nervous.html" />
+  <link rel="icon" type="image/png" href="../images/favourite.png" />
+  <meta name="theme-color" content="#6c5ce7" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Why 99.7% Accuracy Made Me Nervous" />
+  <meta property="og:description" content="The score was excellent. The questions it raised were better." />
+  <meta property="og:url" content="https://sucheta-nandy.github.io/notes/why-99-7-accuracy-made-me-nervous.html" />
+  <meta property="og:image" content="https://sucheta-nandy.github.io/assets/images/portfolio-social-preview.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css?v=20261109-1" />
+</head>
+
+<body data-theme="light">
+  <header class="nav glass">
+    <a class="brand brand-link" href="../index.html" aria-label="Sucheta Nandy home">
+      <div class="logo">SN</div>
+      <div class="brand-text">
+        <div class="name">Sucheta Nandy</div>
+        <div class="subtitle">Data, systems &amp; side quests</div>
+      </div>
+    </a>
+
+    <nav class="nav-links">
+      <a href="../index.html#projects">Projects</a>
+      <a class="active-link" href="../notes.html">Notes</a>
+      <a href="https://medium.com/@suchetanandy" target="_blank" rel="noopener noreferrer">Medium ↗</a>
+    </nav>
+
+    <div class="controls">
+      <button id="themeToggle" aria-label="Toggle theme">🌙</button>
+      <button id="menuToggle" class="mobile-only" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <div id="mobileMenu" class="mobile-menu">
+    <a href="../index.html#projects">Projects</a>
+    <a href="../notes.html">Notes</a>
+    <a href="https://medium.com/@suchetanandy" target="_blank" rel="noopener noreferrer">Medium ↗</a>
+  </div>
+
+  <main>
+    <article class="article-shell">
+      <header class="article-header fade-up">
+        <a class="back-link" href="../notes.html">← Back to all notes</a>
+        <div class="article-label">FIELD NOTE 01 · MODEL EVALUATION</div>
+        <h1>Why 99.7% Accuracy Made Me Nervous</h1>
+        <p class="article-deck">
+          The score was excellent. The questions it raised were better.
+        </p>
+        <div class="article-byline">
+          <span>By Sucheta Nandy</span>
+          <span>8 min read</span>
+          <span>November 2026</span>
+        </div>
+      </header>
+
+      <div class="article-visual fade-up" role="img" aria-label="A 99.7 percent accuracy score followed by the question: signal or leakage?">
+        <div class="visual-score">99.7<small>%</small></div>
+        <div class="visual-arrow">→</div>
+        <div class="visual-question"><span>SIGNAL</span><em>or</em><span>LEAKAGE?</span></div>
+      </div>
+
+      <div class="article-body fade-up">
+        <p class="article-lede">
+          There are numbers that make a machine-learning project look good,
+          and numbers that make you look at the project again. For me,
+          <strong>99.7% test accuracy was both.</strong>
+        </p>
+
+        <p>
+          I had built a multiclass model to predict whether an Uber booking
+          would be completed, cancelled by the customer, cancelled by the
+          driver, left incomplete, or fail because no driver was found. The
+          pipeline compared logistic regression, a decision tree, random
+          forest, and XGBoost. It handled imbalance with SMOTE and reported
+          several metrics. On paper, this was exactly the sort of result I
+          should celebrate.
+        </p>
+
+        <p>
+          But a model that is almost never wrong is making a claim about the
+          world: that the outcome is almost completely knowable from the
+          inputs. Ride marketplaces are noisy. Supply changes. People change
+          their minds. Traffic exists. A near-perfect score did not match the
+          messiness of the system I thought I was modeling.
+        </p>
+
+        <blockquote>
+          When a metric feels more orderly than the world it describes, audit
+          the experiment before admiring the model.
+        </blockquote>
+
+        <h2>The prediction boundary comes first</h2>
+
+        <p>
+          The most important question was not which algorithm won. It was:
+          <strong>At exactly what moment is this prediction supposed to be made?</strong>
+        </p>
+
+        <p>
+          If the goal is to predict booking status when a ride is requested,
+          the model may use information available at request time: location,
+          hour, vehicle type, perhaps current supply. It cannot use fields
+          created after the ride has progressed. Payment method availability,
+          fare values, driver or customer ratings, cancellation metadata, and
+          incomplete-ride flags may all contain pieces of the answer.
+        </p>
+
+        <p>
+          My pipeline explicitly removed cancellation reasons and several
+          obvious outcome fields. That was good—but not sufficient. Some
+          remaining fields could still be lifecycle artifacts. A missing fare
+          filled differently for cancelled bookings, for example, can become
+          a tidy numerical shortcut for the target. The model is not cheating.
+          It is doing exactly what I asked: finding the easiest predictive
+          pattern in the table.
+        </p>
+
+        <div class="article-callout">
+          <span>THE FEATURE TEST</span>
+          <p>Could this value exist, in this form, at the instant the prediction is requested?</p>
+          <strong>If the answer is no, it does not belong in the feature set.</strong>
+        </div>
+
+        <h2>A test set can quietly become a validation set</h2>
+
+        <p>
+          I also found a subtler problem in the evaluation loop. Several model
+          configurations were compared using performance on the same test
+          split, and the best configuration was selected from those results.
+          Once a test set influences model choice, it is no longer an untouched
+          test. It has become part of the tuning process.
+        </p>
+
+        <p>
+          Nothing has to be copied from the test rows into training for this to
+          matter. Repeatedly asking “Which version does best here?” transfers
+          information through decisions. The final estimate becomes optimistic
+          because the experiment has adapted to the supposed final exam.
+        </p>
+
+        <h2>Random is not always realistic</h2>
+
+        <p>
+          A stratified random split preserves class proportions, but it may not
+          represent deployment. If a model will predict future bookings, a
+          temporal split is the more honest simulation: train on earlier
+          periods, validate on a later window, and test on the latest untouched
+          window. That design exposes changes in demand, supply, behavior, and
+          data collection that a random split can blur together.
+        </p>
+
+        <p>
+          The right split is not a generic best practice. It is a miniature
+          version of the future the model will face.
+        </p>
+
+        <h2>How I would rebuild the evaluation</h2>
+
+        <ol class="article-steps">
+          <li>
+            <span>01</span>
+            <div><strong>Write the prediction contract.</strong> Define the decision, prediction timestamp, target window, and data available at that moment.</div>
+          </li>
+          <li>
+            <span>02</span>
+            <div><strong>Build an availability-aware feature list.</strong> Remove post-outcome fields and audit missingness itself as a potential label proxy.</div>
+          </li>
+          <li>
+            <span>03</span>
+            <div><strong>Separate tuning from testing.</strong> Use training and validation data for model selection; touch the final test window once.</div>
+          </li>
+          <li>
+            <span>04</span>
+            <div><strong>Match the split to deployment.</strong> Prefer a time-based holdout when the model is expected to generalize forward.</div>
+          </li>
+          <li>
+            <span>05</span>
+            <div><strong>Measure the failures that matter.</strong> Report macro F1, per-class recall, confusion patterns, calibration, and a simple baseline—not accuracy alone.</div>
+          </li>
+        </ol>
+
+        <h2>The better result may be a lower number</h2>
+
+        <p>
+          After removing shortcuts and making the evaluation more realistic,
+          performance will probably drop. That is not a failed project. It is
+          the point at which the metric begins to mean what we thought it meant.
+        </p>
+
+        <p>
+          This changed the way I talk about machine learning work. I am still
+          interested in stronger models, but I am more interested in whether
+          the system earned the right to make its claim. A trustworthy 78% can
+          be far more valuable than a mysterious 99.7%.
+        </p>
+
+        <p>
+          The first version of this project gave me a high score. Auditing it
+          gave me something better: a sharper definition of prediction, a more
+          honest experiment, and a question I now carry into every model review—
+          <strong>what did the system know, and when did it know it?</strong>
+        </p>
+
+        <footer class="article-footer">
+          <div>
+            <span>THE TAKEAWAY</span>
+            <p>The job is not to produce the largest metric. It is to produce a metric that survives the next question.</p>
+          </div>
+          <div class="article-links">
+            <a class="btn primary" href="https://github.com/sucheta-nandy/Uber_booking_status_prediction" target="_blank" rel="noopener noreferrer">View the project ↗</a>
+            <a class="btn outline" href="../notes.html">More notes</a>
+          </div>
+        </footer>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div>Designed and developed by Sucheta Nandy • © <span id="year"></span></div>
+  </footer>
+
+  <script src="../script.js?v=20261109-1"></script>
+</body>
+</html>

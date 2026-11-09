@@ -13,4 +13,8 @@ Featured work includes:
 - [Genomic NLP Pipeline](https://github.com/sucheta-nandy/genomic-nlp-pipeline)
 - [Uber Booking Status Prediction](https://github.com/sucheta-nandy/Uber_booking_status_prediction)
 
+The site also includes a writing section that brings together published
+Medium essays and original field notes about model evaluation, data systems,
+and the questions behind the metrics.
+
 The site is static HTML, CSS, and JavaScript and is published with GitHub Pages.
