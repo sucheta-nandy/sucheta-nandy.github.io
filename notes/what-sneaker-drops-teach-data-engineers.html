@@ -200,26 +200,8 @@
         <h2>The sole of the architecture</h2>
 
         <p>
-          A robust drop system can be summarized as a sequence of controlled promises:
+          A robust drop system can be summarized as six controlled promises. First, serve the easy traffic at the edge so browsing does not compete with checkout. Second, shape the burst with a waiting room, rate limits, and backpressure. Third, reserve inventory atomically so one state change decides who owns the temporary hold. Fourth, carry idempotency keys across reservation, payment, and order creation so retries are safe. Fifth, publish events only after truth is committed because notifications can be asynchronous but inventory cannot be imaginary. Sixth, reconcile payments, orders, and stock because distributed systems always leave a few crumbs in the shoebox.
         </p>
-
-          <p class="article-promise"><strong>1. Serve the easy traffic at the edge</strong></p>
-          <p>Cache product information and media so browsing does not compete with checkout.</p>
-
-          <p class="article-promise"><strong>2. Shape the burst</strong></p>
-          <p>Use a waiting room, rate limits, and backpressure to protect the reservation path.</p>
-
-          <p class="article-promise"><strong>3. Reserve inventory atomically</strong></p>
-          <p>One state change decides who owns the temporary hold.</p>
-
-          <p class="article-promise"><strong>4. Make retries safe</strong></p>
-          <p>Carry idempotency keys across reservation, payment, and order creation.</p>
-
-          <p class="article-promise"><strong>5. Publish events after truth is committed</strong></p>
-          <p>Notifications and analytics can be asynchronous. Inventory cannot be imaginary.</p>
-
-          <p class="article-promise"><strong>6. Reconcile the weird cases</strong></p>
-          <p>Compare payments, orders, and inventory because distributed systems always leave a few crumbs in the shoebox.</p>
 
         <p>
           That last step is easy to overlook. Services can disagree even when each one behaves correctly. A payment may succeed just as an order request times out. An event may be delivered twice. A hold may expire while a delayed callback is on its way. Reconciliation jobs find these mismatches and either repair them automatically or route them for review.
