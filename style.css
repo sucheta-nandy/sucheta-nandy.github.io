@@ -458,7 +458,13 @@ h1, h2, h3,
 .article-header { max-width: 880px; margin: 0 auto 60px; text-align: center; }
 .back-link { display: inline-block; margin-bottom: 40px; color: var(--muted); text-decoration: none; font-weight: 700; }
 .back-link:hover { color: var(--brand); }
-.article-header h1 { margin: 16px auto 22px; font-size: clamp(50px, 8.5vw, 98px); line-height: 0.94; }
+.article-header h1 {
+  margin: 16px auto 22px;
+  font-family: sohne, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: clamp(50px, 8.5vw, 98px);
+  font-weight: 700;
+  line-height: 0.94;
+}
 .article-deck { color: var(--muted); font-size: clamp(20px, 3vw, 28px); }
 .article-byline { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 24px; margin-top: 28px; color: var(--muted); font-size: 13px; font-weight: 700; }
 .article-visual { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 28px; min-height: 360px; padding: 48px; color: #fff; border-radius: 24px; background: #111426; }
@@ -467,7 +473,13 @@ h1, h2, h3,
 .visual-arrow { color: #ff79a8; font-size: 42px; }
 .visual-question { display: flex; flex-direction: column; gap: 7px; font-size: clamp(24px, 4vw, 46px); font-weight: 800; line-height: 1; }
 .visual-question em { color: rgba(255,255,255,0.46); font-family: Georgia, serif; font-size: 0.6em; font-weight: 400; }
-.article-body { max-width: 760px; margin: 70px auto 0; font-family: Georgia, 'Times New Roman', serif; font-size: 19px; line-height: 1.75; }
+.article-body {
+  max-width: 760px;
+  margin: 70px auto 0;
+  font-family: source-serif-pro, 'Source Serif 4', Georgia, Cambria, 'Times New Roman', Times, serif;
+  font-size: 20px;
+  line-height: 1.6;
+}
 .article-body p { margin-bottom: 26px; }
 .article-lede { font-size: 25px; line-height: 1.52; }
 .article-body h2 { margin: 64px 0 22px; font-family: var(--font-display); font-size: 34px; line-height: 1.1; }
