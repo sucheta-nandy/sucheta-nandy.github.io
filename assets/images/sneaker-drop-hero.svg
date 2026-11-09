@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Sneaker drop traffic meets distributed systems</title>
+  <desc id="desc">A colorful sneaker races toward a checkout button while requests queue in front of servers.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#111426"/>
+      <stop offset="1" stop-color="#22194b"/>
+    </linearGradient>
+    <linearGradient id="shoe" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7de4ef"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="22" stdDeviation="22" flood-color="#000" flood-opacity=".35"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="900" rx="36" fill="url(#bg)"/>
+  <circle cx="1400" cy="120" r="230" fill="#ff5f87" opacity=".13"/>
+  <circle cx="110" cy="830" r="260" fill="#7de4ef" opacity=".09"/>
+  <text x="92" y="118" fill="#7de4ef" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="800" letter-spacing="5">SYSTEMS DESIGN, BUT MAKE IT STREETWEAR</text>
+  <text x="92" y="205" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="68" font-weight="800">50,000 clicks.</text>
+  <text x="92" y="280" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="68" font-weight="800">500 pairs.</text>
+  <text x="92" y="350" fill="#ffcf5c" font-family="Inter, Arial, sans-serif" font-size="68" font-weight="800">One very nervous database.</text>
+
+  <g transform="translate(120 448)" filter="url(#shadow)">
+    <path d="M39 139c87-10 151-35 211-101 17-19 42-24 61-8l74 66c18 16 41 27 65 33l114 28c35 9 60 41 60 77v20H39c-24 0-39-16-39-39v-29c0-25 15-43 39-47z" fill="url(#shoe)"/>
+    <path d="M33 256h594v34c0 23-18 41-41 41H60c-33 0-60-27-60-60v-15h33z" fill="#f8fafc"/>
+    <path d="M274 66l-53 87M327 91l-55 88M383 122l-45 73" stroke="#fff" stroke-width="13" stroke-linecap="round" opacity=".9"/>
+    <path d="M104 160c63 5 120 22 168 50" fill="none" stroke="#111426" stroke-width="15" stroke-linecap="round" opacity=".7"/>
+    <circle cx="500" cy="207" r="23" fill="#ffcf5c"/>
+  </g>
+
+  <g transform="translate(840 472)">
+    <text x="0" y="-48" fill="#c8cad9" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="22">10:00:00 AM</text>
+    <g fill="#ff5f87">
+      <circle cx="15" cy="15" r="13"/><circle cx="55" cy="15" r="13"/><circle cx="95" cy="15" r="13"/><circle cx="135" cy="15" r="13"/>
+      <circle cx="15" cy="55" r="13"/><circle cx="55" cy="55" r="13"/><circle cx="95" cy="55" r="13"/><circle cx="135" cy="55" r="13"/>
+      <circle cx="15" cy="95" r="13"/><circle cx="55" cy="95" r="13"/><circle cx="95" cy="95" r="13"/><circle cx="135" cy="95" r="13"/>
+    </g>
+    <path d="M175 55h95" stroke="#7de4ef" stroke-width="9" stroke-linecap="round"/>
+    <path d="M245 30l28 25-28 25" fill="none" stroke="#7de4ef" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <g transform="translate(304 -15)">
+      <rect width="260" height="155" rx="22" fill="#fff"/>
+      <rect x="25" y="28" width="210" height="28" rx="8" fill="#ded9f8"/>
+      <rect x="25" y="76" width="210" height="53" rx="14" fill="#6c5ce7"/>
+      <text x="130" y="111" text-anchor="middle" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="800">BUY NOW</text>
+    </g>
+    <g transform="translate(613 -30)">
+      <rect width="118" height="190" rx="16" fill="#262b48" stroke="#7de4ef" stroke-width="4"/>
+      <circle cx="24" cy="38" r="8" fill="#72e6a8"/><rect x="45" y="31" width="46" height="14" rx="7" fill="#4a5278"/>
+      <circle cx="24" cy="83" r="8" fill="#72e6a8"/><rect x="45" y="76" width="46" height="14" rx="7" fill="#4a5278"/>
+      <circle cx="24" cy="128" r="8" fill="#ffcf5c"/><rect x="45" y="121" width="46" height="14" rx="7" fill="#4a5278"/>
+      <circle cx="24" cy="164" r="8" fill="#ff5f87"/><rect x="45" y="157" width="46" height="14" rx="7" fill="#4a5278"/>
+    </g>
+  </g>
+  <text x="92" y="838" fill="#aeb2c8" font-family="Inter, Arial, sans-serif" font-size="24">Burst traffic • inventory races • bots • fairness • trust</text>
+</svg>

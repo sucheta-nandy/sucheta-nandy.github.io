@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="980" viewBox="0 0 1600 980" role="img" aria-labelledby="title desc">
+  <title id="title">A fair and resilient sneaker drop architecture</title>
+  <desc id="desc">Requests pass through a waiting room and bot checks before an atomic inventory reservation, payment, events, and reconciliation.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7f5ff"/>
+      <stop offset="1" stop-color="#ecfbfd"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#6c5ce7"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="980" rx="36" fill="url(#bg)"/>
+  <text x="80" y="95" fill="#111426" font-family="Inter, Arial, sans-serif" font-size="49" font-weight="800">A drop architecture that does not trip over its own laces</text>
+  <text x="80" y="142" fill="#62677c" font-family="Inter, Arial, sans-serif" font-size="24">The goal is not infinite scale. The goal is controlled pressure, honest inventory, and explainable outcomes.</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <g transform="translate(70 245)">
+      <circle cx="80" cy="80" r="78" fill="#111426"/>
+      <circle cx="57" cy="59" r="18" fill="#7de4ef"/><circle cx="105" cy="59" r="18" fill="#ffcf5c"/>
+      <path d="M31 123c10-36 42-51 76-46 29 4 48 21 55 46" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round"/>
+      <text x="80" y="193" text-anchor="middle" fill="#111426" font-size="23" font-weight="800">FANS + BOTS</text>
+      <text x="80" y="223" text-anchor="middle" fill="#62677c" font-size="18">same URL, different manners</text>
+    </g>
+
+    <path d="M260 325H370" stroke="#6c5ce7" stroke-width="8" marker-end="url(#arrow)"/>
+
+    <g transform="translate(390 230)">
+      <rect width="290" height="205" rx="28" fill="#fff" stroke="#c7bfff" stroke-width="4"/>
+      <text x="145" y="58" text-anchor="middle" fill="#6c5ce7" font-size="20" font-weight="800" letter-spacing="2">WAITING ROOM</text>
+      <text x="145" y="104" text-anchor="middle" fill="#111426" font-size="30" font-weight="800">Shape the burst</text>
+      <text x="145" y="141" text-anchor="middle" fill="#62677c" font-size="19">signed queue token</text>
+      <text x="145" y="171" text-anchor="middle" fill="#62677c" font-size="19">rate limit + backpressure</text>
+    </g>
+
+    <path d="M700 325H805" stroke="#6c5ce7" stroke-width="8" marker-end="url(#arrow)"/>
+
+    <g transform="translate(825 230)">
+      <rect width="290" height="205" rx="28" fill="#fff" stroke="#f5b8c8" stroke-width="4"/>
+      <text x="145" y="58" text-anchor="middle" fill="#e04872" font-size="20" font-weight="800" letter-spacing="2">BOT DEFENSE</text>
+      <text x="145" y="104" text-anchor="middle" fill="#111426" font-size="30" font-weight="800">Add friction wisely</text>
+      <text x="145" y="141" text-anchor="middle" fill="#62677c" font-size="19">behavior + device signals</text>
+      <text x="145" y="171" text-anchor="middle" fill="#62677c" font-size="19">risk-based challenge</text>
+    </g>
+
+    <path d="M1135 325H1240" stroke="#6c5ce7" stroke-width="8" marker-end="url(#arrow)"/>
+
+    <g transform="translate(1260 230)">
+      <rect width="270" height="205" rx="28" fill="#111426"/>
+      <text x="135" y="58" text-anchor="middle" fill="#7de4ef" font-size="20" font-weight="800" letter-spacing="2">RESERVATION</text>
+      <text x="135" y="104" text-anchor="middle" fill="#fff" font-size="30" font-weight="800">One atomic write</text>
+      <text x="135" y="141" text-anchor="middle" fill="#c8cad9" font-size="19">available → held</text>
+      <text x="135" y="171" text-anchor="middle" fill="#c8cad9" font-size="19">idempotency key</text>
+    </g>
+
+    <path d="M1395 455V565" stroke="#6c5ce7" stroke-width="8" marker-end="url(#arrow)"/>
+
+    <g transform="translate(1230 585)">
+      <rect width="330" height="205" rx="28" fill="#fff" stroke="#a9eacb" stroke-width="4"/>
+      <text x="165" y="58" text-anchor="middle" fill="#23885a" font-size="20" font-weight="800" letter-spacing="2">PAYMENT</text>
+      <text x="165" y="104" text-anchor="middle" fill="#111426" font-size="30" font-weight="800">Charge once</text>
+      <text x="165" y="141" text-anchor="middle" fill="#62677c" font-size="19">retry safely</text>
+      <text x="165" y="171" text-anchor="middle" fill="#62677c" font-size="19">expire abandoned holds</text>
+    </g>
+
+    <path d="M1210 687H1090" stroke="#6c5ce7" stroke-width="8" marker-end="url(#arrow)"/>
+
+    <g transform="translate(770 585)">
+      <rect width="300" height="205" rx="28" fill="#fff" stroke="#c7bfff" stroke-width="4"/>
+      <text x="150" y="58" text-anchor="middle" fill="#6c5ce7" font-size="20" font-weight="800" letter-spacing="2">EVENTS</text>
+      <text x="150" y="104" text-anchor="middle" fill="#111426" font-size="30" font-weight="800">Tell the truth later</text>
+      <text x="150" y="141" text-anchor="middle" fill="#62677c" font-size="19">order confirmed</text>
+      <text x="150" y="171" text-anchor="middle" fill="#62677c" font-size="19">analytics + notifications</text>
+    </g>
+
+    <path d="M750 687H630" stroke="#6c5ce7" stroke-width="8" marker-end="url(#arrow)"/>
+
+    <g transform="translate(250 585)">
+      <rect width="360" height="205" rx="28" fill="#fff" stroke="#f4d37f" stroke-width="4"/>
+      <text x="180" y="58" text-anchor="middle" fill="#a66e00" font-size="20" font-weight="800" letter-spacing="2">RECONCILIATION</text>
+      <text x="180" y="104" text-anchor="middle" fill="#111426" font-size="30" font-weight="800">Trust, then verify</text>
+      <text x="180" y="141" text-anchor="middle" fill="#62677c" font-size="19">payment vs order vs stock</text>
+      <text x="180" y="171" text-anchor="middle" fill="#62677c" font-size="19">repair the weird cases</text>
+    </g>
+  </g>
+
+  <rect x="260" y="850" width="1080" height="68" rx="34" fill="#111426"/>
+  <text x="800" y="894" text-anchor="middle" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700">Protect the scarce state. Let everything else scale around it.</text>
+</svg>

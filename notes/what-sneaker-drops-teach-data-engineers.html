@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>What Sneaker Drops Can Teach Data Engineers About Burst Traffic and Fairness | Sucheta Nandy</title>
+  <meta name="description" content="A sneaker drop is distributed systems in a very expensive shoebox: burst traffic, inventory races, bots, queues, fairness, and trust." />
+  <link rel="canonical" href="https://sucheta-nandy.github.io/notes/what-sneaker-drops-teach-data-engineers.html" />
+  <link rel="icon" type="image/png" href="../images/favourite.png" />
+  <meta name="theme-color" content="#6c5ce7" />
+  <meta property="og:type" content="article" />
+  <meta property="article:author" content="Sucheta Nandy" />
+  <meta property="article:published_time" content="2026-11-09" />
+  <meta property="og:title" content="What Sneaker Drops Can Teach Data Engineers About Burst Traffic and Fairness" />
+  <meta property="og:description" content="Because nothing says distributed systems like 50,000 people clicking Buy at 10:00:00 while one database quietly rethinks its career." />
+  <meta property="og:url" content="https://sucheta-nandy.github.io/notes/what-sneaker-drops-teach-data-engineers.html" />
+  <meta property="og:image" content="https://sucheta-nandy.github.io/assets/images/sneaker-drop-hero.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&amp;display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css?v=20261109-3" />
+</head>
+
+<body data-theme="light">
+  <header class="nav glass">
+    <a class="brand brand-link" href="../index.html" aria-label="Sucheta Nandy home">
+      <div class="logo">SN</div>
+      <div class="brand-text">
+        <div class="name">Sucheta Nandy</div>
+        <div class="subtitle">Data, systems &amp; side quests</div>
+      </div>
+    </a>
+
+    <nav class="nav-links">
+      <a href="../index.html#projects">Projects</a>
+      <a class="active-link" href="../notes.html">Notes</a>
+      <a href="https://medium.com/@suchetanandy" target="_blank" rel="noopener noreferrer">Medium ↗</a>
+    </nav>
+
+    <div class="controls">
+      <button id="themeToggle" aria-label="Toggle theme">🌙</button>
+      <button id="menuToggle" class="mobile-only" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <div id="mobileMenu" class="mobile-menu">
+    <a href="../index.html#projects">Projects</a>
+    <a href="../notes.html">Notes</a>
+    <a href="https://medium.com/@suchetanandy" target="_blank" rel="noopener noreferrer">Medium ↗</a>
+  </div>
+
+  <main>
+    <article class="article-shell">
+      <header class="article-header fade-up">
+        <a class="back-link" href="../notes.html">← Back to all notes</a>
+        <div class="article-label">FIELD NOTE 02 · DISTRIBUTED SYSTEMS</div>
+        <h1>What Sneaker Drops Can Teach Data Engineers About Burst Traffic and Fairness</h1>
+        <p class="article-deck">
+          Because nothing says distributed systems like 50,000 people clicking Buy at 10:00:00 while one database quietly rethinks its career.
+        </p>
+        <div class="article-byline">
+          <span>By Sucheta Nandy</span>
+          <span>9 min read</span>
+          <span>November 2026</span>
+        </div>
+      </header>
+
+      <figure class="article-image fade-up">
+        <img src="../assets/images/sneaker-drop-hero.png" alt="A sneaker races through a burst of requests toward checkout and a nervous server." />
+        <figcaption>The modern sneaker drop: part product launch, part traffic spike, part emotional load test.</figcaption>
+      </figure>
+
+      <div class="article-body fade-up">
+        <p class="article-lede">
+          At 9:59:59, the system is peaceful. At 10:00:00, thousands of people ask the same question: <strong>Do you have my size?</strong> The database, which had been enjoying a quiet morning, is now starring in an action movie.
+        </p>
+
+        <p>
+          A limited sneaker release looks like retail, but underneath the tasteful product photography is a compact lesson in distributed systems. Demand arrives all at once. Inventory is scarce. Bots move faster than humans. Payments fail in creative ways. Every customer believes their click happened first.
+        </p>
+
+        <p>
+          In other words, it is Black Friday compressed into one HTTP request, with better colorways.
+        </p>
+
+        <p>
+          For a data engineer, this is a fascinating problem because the hard part is not simply handling traffic. It is preserving truth when many services, users, and retries are competing to change the same tiny piece of state: one pair of shoes.
+        </p>
+
+        <h2>The drop is a traffic jam wearing Jordans</h2>
+
+        <p>
+          Most systems receive traffic in curves. A sneaker drop receives a cliff. People do not wander in throughout the day. They synchronize their phones, refresh together, and attack the Buy button with the focus of a NASA launch team.
+        </p>
+
+        <p>
+          This changes the engineering question. Average requests per second becomes a comforting but nearly useless number. A service can handle Tuesday beautifully and still faint at exactly 10:00:01 on Saturday.
+        </p>
+
+        <p>
+          The useful questions are about the burst: How steep is the first ten seconds? Which operation becomes scarce first? Can the system absorb pressure without lying about inventory? What happens when downstream services slow down?
+        </p>
+
+        <blockquote>
+          Scale is not only about serving more requests. Sometimes it is about deciding which requests are allowed to become expensive.
+        </blockquote>
+
+        <p>
+          Static product pages can sit behind a content delivery network. Product photos can be cached. Even the launch countdown can be delivered from the edge. None of those requests need to wake the primary database.
+        </p>
+
+        <p>
+          The dangerous path begins when a customer asks to reserve inventory. That request changes shared state, so it cannot be solved by adding more cache and positive thinking. The architecture should keep the browsing path cheap and make the reservation path narrow, deliberate, and protected.
+        </p>
+
+        <h2>Add to Cart is not a blood oath</h2>
+
+        <p>
+          Imagine there is one pair of size 7 sneakers left. Two shoppers click at nearly the same moment. Both requests read <code>available = 1</code>. Both happily proceed. The system has now sold the same shoe twice, which is a bold inventory strategy and a terrible customer experience.
+        </p>
+
+        <p>
+          The fix is not a faster read. It is an atomic state transition. The database must perform one indivisible operation that says: reserve this item only if it is still available. One request changes the pair from available to held. The other receives an honest no.
+        </p>
+
+        <div class="article-callout">
+          <span>THE SCARCE-STATE RULE</span>
+          <p>Protect the smallest piece of truth that everybody wants to change.</p>
+          <strong>For a drop, that is inventory by product, size, and location.</strong>
+        </div>
+
+        <p>
+          A hold should also expire. If a shopper reserves a pair and disappears to compare resale prices, the inventory cannot remain trapped forever. A short time-to-live returns abandoned stock to the pool.
+        </p>
+
+        <p>
+          This creates another requirement: every reservation needs an identity. If the customer taps twice, the browser retries, or a gateway times out, the system should recognize the same intent instead of reserving two pairs. That is what an idempotency key provides. It turns “please do this again” into “please make sure this happened once.”
+        </p>
+
+        <h2>Bots have entered the checkout</h2>
+
+        <p>
+          Sneaker bots are distributed systems too. Unfortunately, they have chosen the dark side and excellent latency.
+        </p>
+
+        <p>
+          A bot can create accounts, rotate IP addresses, automate checkout, and submit requests at a speed no human thumb can match. Blocking one suspicious address is therefore less of a security strategy and more of a strongly worded suggestion.
+        </p>
+
+        <p>
+          Effective bot defense combines signals. Request timing, device fingerprints, navigation behavior, account history, payment reuse, and challenge outcomes can feed a risk score. High-risk requests receive more friction. Normal customers should not have to identify every traffic light in the state of Pennsylvania just to buy sneakers.
+        </p>
+
+        <p>
+          This is where data engineering becomes central. Fraud and bot models are only as useful as the event pipelines behind them. Events need consistent schemas, trustworthy timestamps, deduplication, and enough context to reconstruct a session. A model trained on messy telemetry will confidently detect whatever the logging bug taught it.
+        </p>
+
+        <h2>Fairness is a feature, not footwear</h2>
+
+        <p>
+          First come, first served sounds fair until “first” means the person with the lowest network latency, the fastest script, or a cloud server parked next to the retailer’s data center. A queue gives the system a chance to define fairness instead of accidentally outsourcing it to internet speed.
+        </p>
+
+        <p>
+          The waiting room absorbs the initial burst and admits customers at a rate the reservation service can safely handle. Each customer receives a signed queue token. The token proves their place and prevents someone from skipping the line by editing a number in the browser.
+        </p>
+
+        <p>
+          But every queue contains a policy decision wearing a technical costume. Should position be based on arrival time? Should the system randomize everyone who arrived before launch? Should loyal customers receive access? What happens to users with unstable connections? Engineering can implement any of these rules. It cannot decide which one deserves to exist.
+        </p>
+
+        <blockquote>
+          A fair queue is not just an algorithm. It is a product promise that the architecture must be able to explain.
+        </blockquote>
+
+        <h2>The queue has trust issues</h2>
+
+        <p>
+          Customers will forgive not getting a limited shoe. They are less forgiving when the queue jumps backward, checkout crashes, or a Sold Out banner appears after a payment authorization.
+        </p>
+
+        <p>
+          The queue experience therefore needs more than a spinner and motivational copy. It needs observable state. The customer should know whether they are waiting, admitted, holding inventory, paying, confirmed, or released. Internally, those same states should appear in logs and metrics with a shared correlation ID.
+        </p>
+
+        <p>
+          Good observability answers business questions, not just server questions. CPU usage matters, but so do reservation success rate, oversell attempts, hold expirations, payment-to-order mismatches, queue abandonment, and the percentage of inventory captured by suspicious clusters.
+        </p>
+
+        <p>
+          An HTTP 200 only means the server answered. It does not mean the customer got shoes, the payment matched the order, or the inventory ledger agrees with either one. HTTP 200, customer 0.
+        </p>
+
+        <figure class="article-image article-image-wide">
+          <img src="../assets/images/sneaker-drop-architecture.png" alt="A resilient sneaker drop architecture with a waiting room, bot defense, atomic reservation, payment, events, and reconciliation." />
+          <figcaption>A practical flow: shape the burst, challenge selectively, protect inventory, retry safely, and reconcile everything.</figcaption>
+        </figure>
+
+        <h2>The sole of the architecture</h2>
+
+        <p>
+          A robust drop system can be summarized as a sequence of controlled promises:
+        </p>
+
+        <ol class="article-steps">
+          <li>
+            <span>01</span>
+            <div><strong>Serve the easy traffic at the edge.</strong> Cache product information and media so browsing does not compete with checkout.</div>
+          </li>
+          <li>
+            <span>02</span>
+            <div><strong>Shape the burst.</strong> Use a waiting room, rate limits, and backpressure to protect the reservation path.</div>
+          </li>
+          <li>
+            <span>03</span>
+            <div><strong>Reserve inventory atomically.</strong> One state change decides who owns the temporary hold.</div>
+          </li>
+          <li>
+            <span>04</span>
+            <div><strong>Make retries safe.</strong> Carry idempotency keys across reservation, payment, and order creation.</div>
+          </li>
+          <li>
+            <span>05</span>
+            <div><strong>Publish events after truth is committed.</strong> Notifications and analytics can be asynchronous. Inventory cannot be imaginary.</div>
+          </li>
+          <li>
+            <span>06</span>
+            <div><strong>Reconcile the weird cases.</strong> Compare payments, orders, and inventory because distributed systems always leave a few crumbs in the shoebox.</div>
+          </li>
+        </ol>
+
+        <p>
+          That last step is easy to overlook. Services can disagree even when each one behaves correctly. A payment may succeed just as an order request times out. An event may be delivered twice. A hold may expire while a delayed callback is on its way. Reconciliation jobs find these mismatches and either repair them automatically or route them for review.
+        </p>
+
+        <p>
+          Event-driven architecture helps separate the immediate purchase decision from slower follow-up work. Once an order is durably committed, events can trigger confirmation emails, loyalty updates, analytics, and warehouse workflows. A transactional outbox or equivalent pattern keeps the database write and event publication from becoming two unrelated promises.
+        </p>
+
+        <h2>The real product is trust</h2>
+
+        <p>
+          The most interesting lesson from sneaker drops is not how to survive traffic. It is how technical choices become visible as fairness.
+        </p>
+
+        <p>
+          A queue policy decides whose time matters. A reservation transaction decides whether inventory is truthful. An idempotency key decides whether a retry becomes a duplicate charge. An observability pipeline decides whether support can explain what happened. These are implementation details right up until they become someone’s Saturday morning.
+        </p>
+
+        <p>
+          That is why I like this problem as an interview conversation. It connects data engineering, distributed systems, product judgment, and human behavior. The database is not protecting a row. It is protecting the credibility of the experience.
+        </p>
+
+        <p>
+          I may still take the L on release day. Limited inventory is limited inventory. But if I take the L, I at least want the logs to make sense.
+        </p>
+
+        <p>
+          That is my kind of sole searching.
+        </p>
+
+        <footer class="article-footer">
+          <div>
+            <span>THE TAKEAWAY</span>
+            <p>A great drop system does not promise everyone a pair. It promises that scarce inventory will be allocated honestly, failures will be recoverable, and the outcome can be explained.</p>
+          </div>
+          <div class="article-links">
+            <a class="btn primary" href="https://medium.com/@suchetanandy" target="_blank" rel="noopener noreferrer">Follow on Medium ↗</a>
+            <a class="btn outline" href="../notes.html">More notes</a>
+          </div>
+        </footer>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div>Designed and developed by Sucheta Nandy • © <span id="year"></span></div>
+  </footer>
+
+  <script src="../script.js?v=20261109-1"></script>
+</body>
+</html>
