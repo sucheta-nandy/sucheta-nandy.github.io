@@ -203,25 +203,23 @@
           A robust drop system can be summarized as a sequence of controlled promises:
         </p>
 
-        <div class="article-promises">
-          <h3>1. Serve the easy traffic at the edge</h3>
+          <p class="article-promise"><strong>1. Serve the easy traffic at the edge</strong></p>
           <p>Cache product information and media so browsing does not compete with checkout.</p>
 
-          <h3>2. Shape the burst</h3>
+          <p class="article-promise"><strong>2. Shape the burst</strong></p>
           <p>Use a waiting room, rate limits, and backpressure to protect the reservation path.</p>
 
-          <h3>3. Reserve inventory atomically</h3>
+          <p class="article-promise"><strong>3. Reserve inventory atomically</strong></p>
           <p>One state change decides who owns the temporary hold.</p>
 
-          <h3>4. Make retries safe</h3>
+          <p class="article-promise"><strong>4. Make retries safe</strong></p>
           <p>Carry idempotency keys across reservation, payment, and order creation.</p>
 
-          <h3>5. Publish events after truth is committed</h3>
+          <p class="article-promise"><strong>5. Publish events after truth is committed</strong></p>
           <p>Notifications and analytics can be asynchronous. Inventory cannot be imaginary.</p>
 
-          <h3>6. Reconcile the weird cases</h3>
+          <p class="article-promise"><strong>6. Reconcile the weird cases</strong></p>
           <p>Compare payments, orders, and inventory because distributed systems always leave a few crumbs in the shoebox.</p>
-        </div>
 
         <p>
           That last step is easy to overlook. Services can disagree even when each one behaves correctly. A payment may succeed just as an order request times out. An event may be delivered twice. A hold may expire while a delayed callback is on its way. Reconciliation jobs find these mismatches and either repair them automatically or route them for review.
