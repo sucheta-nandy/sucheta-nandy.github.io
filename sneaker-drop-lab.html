@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sneaker Drop Systems Lab | Sucheta Nandy</title>
+  <meta name="description" content="An interactive distributed-systems simulator for sneaker drops, burst traffic, bot pressure, inventory races, payments, and fairness." />
+  <link rel="canonical" href="https://sucheta-nandy.github.io/sneaker-drop-lab.html" />
+  <link rel="icon" type="image/png" href="images/favourite.png" />
+  <meta name="theme-color" content="#6c5ce7" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Sneaker Drop Systems Lab" />
+  <meta property="og:description" content="Stress-test a sneaker launch. Change the crowd, bots, queue, inventory, and safety rails to see which promises survive." />
+  <meta property="og:url" content="https://sucheta-nandy.github.io/sneaker-drop-lab.html" />
+  <meta property="og:image" content="https://sucheta-nandy.github.io/assets/images/sneaker-drop-hero.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=20261109-5" />
+  <link rel="stylesheet" href="sneaker-drop-lab.css?v=20261109-1" />
+</head>
+
+<body data-theme="light">
+  <header class="nav glass">
+    <a class="brand brand-link" href="index.html" aria-label="Sucheta Nandy home">
+      <div class="logo">SN</div>
+      <div class="brand-text">
+        <div class="name">Sucheta Nandy</div>
+        <div class="subtitle">Data, systems &amp; side quests</div>
+      </div>
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html#projects">Projects</a>
+      <a href="notes.html">Notes</a>
+      <a class="active-link" href="sneaker-drop-lab.html">Systems Lab</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+
+    <div class="controls">
+      <button id="themeToggle" aria-label="Toggle theme">🌙</button>
+      <button id="menuToggle" class="mobile-only" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <div id="mobileMenu" class="mobile-menu">
+    <a href="index.html#projects">Projects</a>
+    <a href="notes.html">Notes</a>
+    <a href="sneaker-drop-lab.html">Systems Lab</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+
+  <main class="lab-page">
+    <section class="lab-hero container fade-up">
+      <div class="lab-hero-copy">
+        <a class="back-link" href="notes/what-sneaker-drops-teach-data-engineers.html">← Read the field note</a>
+        <div class="section-kicker">Interactive systems lab</div>
+        <h1>Can your sneaker drop survive 10:00:00?</h1>
+        <p>
+          Change the crowd, bot pressure, queue, inventory, and checkout safety rails.
+          Then watch one very nervous architecture try to keep its promises.
+        </p>
+      </div>
+      <div class="lab-hero-stamp" aria-hidden="true">
+        <span>DROP</span>
+        <strong>10:00</strong>
+        <small>LOAD TEST</small>
+      </div>
+    </section>
+
+    <section class="lab-workspace container fade-up" aria-labelledby="simulator-title">
+      <div class="lab-toolbar">
+        <div>
+          <span class="lab-eyebrow">Scenario presets</span>
+          <h2 id="simulator-title">Stress the launch</h2>
+        </div>
+        <div class="preset-buttons" aria-label="Scenario presets">
+          <button class="preset-button active" type="button" data-preset="fair">Fair launch</button>
+          <button class="preset-button" type="button" data-preset="bots">Bot storm</button>
+          <button class="preset-button" type="button" data-preset="fragile">Fragile checkout</button>
+        </div>
+      </div>
+
+      <div class="lab-layout">
+        <form class="lab-controls" id="labControls">
+          <div class="control-group">
+            <label for="customers">
+              <span>Customers at launch</span>
+              <output id="customersValue" for="customers">50,000</output>
+            </label>
+            <input id="customers" name="customers" type="range" min="5000" max="100000" step="5000" value="50000" />
+          </div>
+
+          <div class="control-group">
+            <label for="inventory">
+              <span>Pairs available</span>
+              <output id="inventoryValue" for="inventory">500</output>
+            </label>
+            <input id="inventory" name="inventory" type="range" min="100" max="2000" step="100" value="500" />
+          </div>
+
+          <div class="control-group">
+            <label for="bots">
+              <span>Bot traffic</span>
+              <output id="botsValue" for="bots">35%</output>
+            </label>
+            <input id="bots" name="bots" type="range" min="0" max="70" step="5" value="35" />
+          </div>
+
+          <div class="control-group">
+            <label for="admission">
+              <span>Queue admission rate</span>
+              <output id="admissionValue" for="admission">1,500/min</output>
+            </label>
+            <input id="admission" name="admission" type="range" min="500" max="5000" step="250" value="1500" />
+          </div>
+
+          <div class="control-group">
+            <label for="paymentFailure">
+              <span>Payment failure rate</span>
+              <output id="paymentFailureValue" for="paymentFailure">8%</output>
+            </label>
+            <input id="paymentFailure" name="paymentFailure" type="range" min="0" max="30" step="1" value="8" />
+          </div>
+
+          <div class="control-group">
+            <label for="holdTtl">
+              <span>Inventory hold timeout</span>
+              <output id="holdTtlValue" for="holdTtl">5 min</output>
+            </label>
+            <input id="holdTtl" name="holdTtl" type="range" min="2" max="12" step="1" value="5" />
+          </div>
+
+          <div class="select-group">
+            <label for="policy">Allocation policy</label>
+            <select id="policy" name="policy">
+              <option value="fifo">First come, first served</option>
+              <option value="lottery" selected>Launch-window lottery</option>
+              <option value="risk">Risk-aware queue</option>
+            </select>
+          </div>
+
+          <fieldset class="safety-group">
+            <legend>Checkout safety rails</legend>
+            <label class="safety-toggle">
+              <input id="atomic" name="atomic" type="checkbox" checked />
+              <span><strong>Atomic reservations</strong><small>One pair, one winning write</small></span>
+            </label>
+            <label class="safety-toggle">
+              <input id="idempotency" name="idempotency" type="checkbox" checked />
+              <span><strong>Idempotency keys</strong><small>One intent, one charge</small></span>
+            </label>
+          </fieldset>
+        </form>
+
+        <div class="lab-results">
+          <div class="metric-grid" aria-live="polite" id="metricSummary">
+            <div class="metric-card">
+              <span>Orders confirmed</span>
+              <strong id="ordersMetric">500 / 500</strong>
+              <small id="ordersContext">100% sell-through</small>
+            </div>
+            <div class="metric-card">
+              <span>Human allocation</span>
+              <strong id="humanMetric">65%</strong>
+              <small id="humanContext">matches demand share</small>
+            </div>
+            <div class="metric-card">
+              <span>Estimated p95 wait</span>
+              <strong id="waitMetric">21.4 min</strong>
+              <small id="waitContext">queue clears in 33.4 min</small>
+            </div>
+          </div>
+
+          <section class="chart-panel" aria-labelledby="traffic-chart-title">
+            <div class="panel-heading">
+              <div>
+                <span class="lab-eyebrow">First 12 minutes</span>
+                <h3 id="traffic-chart-title">Burst traffic versus admission</h3>
+              </div>
+              <div class="chart-legend" aria-hidden="true">
+                <span><i class="legend-arrivals"></i>Arrivals</span>
+                <span><i class="legend-admitted"></i>Admitted</span>
+              </div>
+            </div>
+            <svg id="trafficChart" viewBox="0 0 760 280" role="img" aria-labelledby="trafficChartTitle trafficChartDesc">
+              <title id="trafficChartTitle">Traffic and queue admission over twelve minutes</title>
+              <desc id="trafficChartDesc">The chart updates when simulator controls change.</desc>
+              <g id="chartGrid"></g>
+              <path id="arrivalsArea" class="arrivals-area" d=""></path>
+              <path id="arrivalsLine" class="arrivals-line" d=""></path>
+              <path id="admittedLine" class="admitted-line" d=""></path>
+              <g id="chartLabels"></g>
+            </svg>
+            <div class="queue-pressure">
+              <div>
+                <span>Peak queue</span>
+                <strong id="peakQueueValue">0</strong>
+              </div>
+              <div class="queue-track" aria-hidden="true"><span id="queueBar"></span></div>
+            </div>
+          </section>
+
+          <section class="system-panel" aria-labelledby="system-flow-title">
+            <div class="panel-heading">
+              <div>
+                <span class="lab-eyebrow">Stateful path</span>
+                <h3 id="system-flow-title">Where the pressure goes</h3>
+              </div>
+            </div>
+
+            <div class="system-flow">
+              <div class="system-stage">
+                <span>01</span>
+                <strong>Waiting room</strong>
+                <small id="queueStage">0 peak queue</small>
+              </div>
+              <div class="flow-arrow" aria-hidden="true">→</div>
+              <div class="system-stage">
+                <span>02</span>
+                <strong>Bot defense</strong>
+                <small id="botStage">0 filtered</small>
+              </div>
+              <div class="flow-arrow" aria-hidden="true">→</div>
+              <div class="system-stage" id="inventoryStageCard">
+                <span>03</span>
+                <strong>Reservation</strong>
+                <small id="inventoryStage">0 conflicts blocked</small>
+              </div>
+              <div class="flow-arrow" aria-hidden="true">→</div>
+              <div class="system-stage" id="paymentStageCard">
+                <span>04</span>
+                <strong>Payment</strong>
+                <small id="paymentStage">0 safe retries</small>
+              </div>
+              <div class="flow-arrow" aria-hidden="true">→</div>
+              <div class="system-stage">
+                <span>05</span>
+                <strong>Reconcile</strong>
+                <small id="reconcileStage">0 mismatches</small>
+              </div>
+            </div>
+
+            <div class="failure-ledger" aria-live="polite">
+              <div><span>Bot orders</span><strong id="botOrdersValue">0</strong></div>
+              <div><span>Expired holds</span><strong id="expiredValue">0</strong></div>
+              <div><span>Oversold units</span><strong id="oversoldValue">0</strong></div>
+              <div><span>Duplicate charges</span><strong id="duplicatesValue">0</strong></div>
+            </div>
+          </section>
+
+          <div class="model-note">
+            <strong id="modelHeadline">The architecture is keeping its promises.</strong>
+            <p id="modelExplanation">The queue shapes the burst, the reservation write protects inventory, and payment retries stay idempotent.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="lab-lessons container fade-up">
+      <div class="section-kicker">Interview mode</div>
+      <h2>Three questions hiding inside the simulator</h2>
+      <div class="lesson-grid">
+        <article>
+          <span>01</span>
+          <h3>What does “fair” mean?</h3>
+          <p>FIFO rewards speed. A lottery reduces latency advantage. Risk-aware admission trades false positives for bot resistance.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Where must truth be synchronous?</h3>
+          <p>Inventory allocation needs one atomic decision. Notifications and analytics can wait until the order is committed.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Which failure deserves a metric?</h3>
+          <p>Server uptime is not enough. Track queue abandonment, oversells, duplicate charges, expired holds, and allocation outcomes.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>Designed and developed by Sucheta Nandy • © <span id="year"></span></div>
+  </footer>
+
+  <script src="script.js?v=20261109-1"></script>
+  <script src="sneaker-drop-lab.js?v=20261109-1"></script>
+</body>
+</html>
